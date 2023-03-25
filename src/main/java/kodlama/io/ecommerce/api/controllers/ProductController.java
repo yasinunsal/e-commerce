@@ -12,34 +12,34 @@ import java.util.List;
 @RestController
 @RequestMapping(name = "/products")
 public class ProductController {
-    private final ProductService productService;
+    private final ProductService service;
 
     @GetMapping
     public List<Product> getAll() {
-        return productService.getAll();
+        return service.getAll();
     }
 
     @GetMapping("/{id}")
     public Product getById(@PathVariable int id) {
-        return productService.getById(id);
+        return service.getById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Product create(@RequestBody Product product) {
-        return productService.add(product);
+        return service.add(product);
 
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable int id) {
-        productService.delete(id);
+        service.delete(id);
     }
 
     @PutMapping("/{id}")
     public Product update(@RequestBody Product product, @PathVariable int id) {
-        return productService.update(product, id);
+        return service.update(product, id);
     }
 
 }
